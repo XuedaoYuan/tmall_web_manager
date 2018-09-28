@@ -1,8 +1,20 @@
 * {
-	padding: 0;
-	margin: 0;
+    padding: 0;
+    margin: 0;
 }
+
 a {
-	text-decoration:none; 
-	color: #fff;
+    text-decoration: none;
+    color: #fff;
+}
+
+//底部固定栏
+.xdyuan-footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #fff;
+    padding: 20px 40px;
+    left: 0;
+    border-top: 1px solid #ccc;
 }

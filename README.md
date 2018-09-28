@@ -1,4 +1,4 @@
-# webpack
+# small_demo_manager
 
 ## Project setup
 ```
@@ -14,3 +14,4 @@ npm run serve
 ```
 npm run build
 ```
+
