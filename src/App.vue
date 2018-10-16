@@ -4,7 +4,7 @@
             <!-- <router-link class="nav-tab" to="/">sss</router-link> -->
             <!-- <router-link class="nav-tab" to="/about">About</router-link> -->
             <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect" background-color="#545c64" text-color="#fff" active-text-color="#ffd04b">
-                <el-menu-item index="1">产品分类</el-menu-item>
+                <el-menu-item index="1">产品管理</el-menu-item>
                 <!--  <el-submenu index="2">
                     <template slot="title">我的工作台</template>
                     <el-menu-item index="2-1">选项1</el-menu-item>
@@ -17,7 +17,7 @@
                         <el-menu-item index="2-4-3">选项3</el-menu-item>
                     </el-submenu>
                 </el-submenu> -->
-                <el-menu-item index="2">about</el-menu-item>
+                <el-menu-item index="2">用户管理</el-menu-item>
                 <!-- <el-menu-item index="3">订单管理</a></el-menu-item> -->
             </el-menu>
         </div>
@@ -34,15 +34,30 @@ export default {
             activeIndex: '1'
         }
     },
+    created() {
+        let activeIndex = localStorage.getItem("activeIndex");
+
+        if (!activeIndex) {
+            activeIndex = "1";
+        }
+
+        this.handleSelect(activeIndex);
+    },
+    mounted() {
+
+    },
     methods: {
         handleSelect(key, keyPath) {
-            console.log(key, keyPath);
+           
+            window.localStorage.setItem("activeIndex", key);
+            this.activeIndex = key;
             switch (key) {
                 case '1':
                     this.$router.push("/");
                     break;
                 case '2':
-                    this.$router.push("/about");
+                    
+                    this.$router.push("/user");
                     break;
                 default:
                     // statements_def
@@ -74,6 +89,9 @@ export default {
 
 
 
+
+
+
 /* #nav {
     height: 80px;
     background-color: black;
@@ -88,6 +106,6 @@ export default {
  */
 
 #container {
-    padding: 0  40px 100px;
+    padding: 0 40px 100px;
 }
 </style>

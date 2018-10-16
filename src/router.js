@@ -2,6 +2,8 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Category from './views/Category.vue'
 
+
+
 Vue.use(Router)
 
 export default new Router({
@@ -10,6 +12,26 @@ export default new Router({
       path: '/',
       name: 'category',
       component: Category
+    },
+    {
+      path: "/property",
+      name: "property",
+      component: () => import('./views/Property.vue')
+    },
+    {
+      path: "/product",
+      name: "product",
+      component: () => import('./views/Product.vue')
+    },
+    {
+      path: "/productimage",
+      name: "productimage",
+      component: () => import('./views/ProductImage.vue')
+    },
+    {
+      path: "/user",
+      name: "user",
+      component: () => import('./views/User.vue')
     },
     {
       path: '/about',
