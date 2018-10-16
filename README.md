@@ -1,4 +1,4 @@
-# small_demo_manager
+# tmall_demo_manager
 
 ## Project setup
 ```
