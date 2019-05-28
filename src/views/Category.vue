@@ -7,6 +7,7 @@
             <el-table-column prop="id" align="center" label="ID" width="80"></el-table-column>
             <!-- <el-table-column prop="id" align="center" label="图片"></el-table-column> -->
             <el-table-column prop="name" align="center" label="分类名称"></el-table-column>
+            <el-table-column prop="imageUrl" align="center" label="图片"></el-table-column>
             <el-table-column align="center" label="属性管理">
                 <template slot-scope="scope">
                     <el-button type="primary" size="mini" @click="handleManageProperty(scope.$index, scope.row)">去管理</el-button>
