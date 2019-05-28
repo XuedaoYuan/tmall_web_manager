@@ -65,7 +65,7 @@
       ></el-pagination>
     </div>
     <!-- dislogs-start -->
-    <el-dialog center title="新增产品" :visible.sync="dialogFormVisible">
+    <el-dialog center title="新增-编辑" :visible.sync="dialogFormVisible">
       <el-form :model="form">
         <el-form-item label="CID" label-width="100px">
           <el-input disabled v-model="form.cid" autocomplete="off"></el-input>
@@ -100,12 +100,12 @@
           :label="item.property.name"
           label-width="100px"
         >
-          <el-input @blur="handdleBlur" autocomplete="off"></el-input>
+          <el-input @blur="handdleBlur" v-model="item.value" autocomplete="off"></el-input>
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
         <el-button @click="dialogFormEditPropVisible = false">取 消</el-button>
-        <el-button type="primary" @click="handleEditProperty">确 定</el-button>
+        <el-button type="primary">确 定</el-button>
       </div>
     </el-dialog>
     <!-- dislogs-end -->
@@ -133,7 +133,11 @@ export default {
       },
       form2: {},
 
-      properties: [],
+      properties: [
+        {
+          value: ''
+        }
+      ],
 
       dialogFormVisible: false,
       dialogFormEditPropVisible: false
@@ -147,9 +151,6 @@ export default {
   methods: {
     handdleBlur(val) {
       console.log(val)
-    },
-    handleEditProperty() {
-      this.dialogFormEditPropVisible = false
     },
     queryProducts() {
       this.$axios({
@@ -212,12 +213,6 @@ export default {
       vm.handleDislog(true)
     },
     async handleEditProperty(index, row) {
-      await this.$axios({
-        url: '/propertyvalue/init',
-        method: 'POST',
-        data: row
-      })
-
       const res = await this.$axios({
         url: '/propertyvalue/list',
         method: 'GET',
@@ -225,7 +220,7 @@ export default {
           pid: row.id
         }
       })
-      this.properties = res.data
+      this.properties = [...res.data]
       this.dialogFormEditPropVisible = true
     },
     handleDelete(index, row) {

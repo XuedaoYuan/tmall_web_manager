@@ -21,7 +21,7 @@ axios.interceptors.response.use(
 	err => {
 		Vue.prototype.$message({
 			type: 'error',
-			message: '接口调用他失败'
+			message: '接口调用失败'
 		})
 	}
 )
